@@ -2,13 +2,14 @@
 
 First GitHub Project!<br/>
 
+**********
 ## 工程获取执行步骤
 * `git clone https://github.com/JUBO1992/Hello-World.git`
 * `npm install`
 * `npm start`
 
 **********
-## 工程结构
+## 
 ```
 Hello-World/
 ├── examples/
@@ -22,12 +23,17 @@ Hello-World/
 └── README.md
 ```
 ----------
-## Web前端学习内容
+## 开发环境
 
 * [**Visual Studio Code(Rich Text Edit)**](https://code.visualstudio.com/docs)
 
 * [![Git icon](http://git-scm.com/images/logo@2x.png)](https://git-scm.com/book/zh/v2)<br>
 **Git(Code Version Control System)**
+
+* [**Dev Express(Third Part Controls)**](https://www.devexpress.com/)
+
+----------
+## Web前端学习内容
 
 * [**ECharts(JavaScript Chart Library)**](http://echarts.baidu.com/)
 
@@ -38,3 +44,16 @@ Hello-World/
 * [**JQuery(JavaScript Library)**](http://api.jquery.com/)
 
 * [**dojo(JavaScript Toolkit)**](http://dojotoolkit.org/)
+
+* [**TypeScript(Typed Superset of JavaScript)**](https://www.typescriptlang.org/)
+
+* **Angular JS(Front JS Framework)**
+
+* **AJAX(Asynchronous Javascript And XML)**
+
+----------
+## 服务端学习内容
+
+* **ASP.NET**
+* **Node.js**
+* **PostgreSQL**
