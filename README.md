@@ -47,9 +47,9 @@ Hello-World/
 
 * [**TypeScript(Typed Superset of JavaScript)**](https://www.typescriptlang.org/)
 
-* **Angular JS(Front JS Framework)**
+* [**Angular JS(Front JS Framework)**](http://www.runoob.com/angularjs/angularjs-tutorial.html)
 
-* **AJAX(Asynchronous Javascript And XML)**
+* [**AJAX(Asynchronous Javascript And XML)**](http://www.runoob.com/ajax/ajax-tutorial.html)
 
 ----------
 ## 服务端学习内容

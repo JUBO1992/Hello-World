@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <title>Angular JS</title>
+    <script src="//www.runoob.com/try/angularjs/1.2.5/angular.min.js"></script>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <script src="personCtrl.js"></script>
+    <style>
+        #div1 {
+            background-color: red;
+        }
+        
+        #div2 {
+            background-color: green;
+        }
+        
+        #div3 {
+            background-color: blue;
+        }
+    </style>
+    <div class="container" ng-app="def" ng-controller="personCtrl">
+        <div class="container" id="div1">
+            <br> 名：
+            <input type="text" ng-model="firstN"> 姓：<input type="text" ng-model="lastN">
+            <br>
+            <p>姓名：{{firstN +" "+ lastN}}</p>
+            <br>
+        </div>
+
+        <div class="container" id="div2">
+            <br>
+            <p>名字 : <input type="text" ng-model="name"></p>
+            <h1>Hello {{name}}</h1>
+        </div>
+        <div class="container" id="div3">
+            <br>
+            <p>名：<input type="text" ng-model="person.firstName"></p><br>
+            <p>姓：<input type="text" ng-model="person.lastName"></p><br>
+            <p>姓名：{{fullName()}}</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
