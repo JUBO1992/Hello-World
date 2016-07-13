@@ -1,6 +1,9 @@
 var dojoconfig = {
     baseUrl: '.',
     packages: [{
+        name: 'dojo',
+        location: 'bower_components/dojo',
+    }, {
         name: 'react',
         location: 'node_modules/react/dist',
         main: 'react'
