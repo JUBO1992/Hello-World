@@ -1,0 +1,17 @@
+{
+  "name": "web",
+  "description": "`bower install`",
+  "main": "",
+  "authors": [
+    "JUBO1992 <JUBO_1992@163.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/JUBO1992/Hello-World",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
