@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "./dist/",
-        "module": "commonjs",
+        "module": "umd",
         "target": "es5",
         "noImplicitAny": false,
         "sourceMap": true,
@@ -9,8 +9,8 @@
     },
     "exclude": [
         "node_modules",
-    "bower_components",
-    "typings"
+        "bower_components",
+        "typings"
     ],
     "compileOnSave": true
 }
