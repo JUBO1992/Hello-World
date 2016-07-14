@@ -1,12 +1,12 @@
 {
     "name": "web",
-    "description": "",
+    "description": "`bower install`",
     "main": "",
     "authors": [
-        "bjv <jubo_1992@163.com>"
+        "JUBO1992 <JUBO_1992@163.com>"
     ],
     "license": "ISC",
-    "homepage": "https://github.com/JUBO1992/Hello-World",
+    "homepage": "index.html",
     "ignore": [
         "**/.*",
         "node_modules",
@@ -15,7 +15,6 @@
         "tests"
     ],
     "dependencies": {
-        "esri": "arcgis-js-api#4.0.0",
-        "bootstrap": "https://github.com/twbs/bootstrap.git#^3.3.6"
+        "dojo": "^1.11.2"
     }
 }
