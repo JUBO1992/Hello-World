@@ -1,0 +1,21 @@
+{
+    "name": "web",
+    "description": "",
+    "main": "",
+    "authors": [
+        "bjv <jubo_1992@163.com>"
+    ],
+    "license": "ISC",
+    "homepage": "https://github.com/JUBO1992/Hello-World",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "esri": "arcgis-js-api#4.0.0",
+        "bootstrap": "https://github.com/twbs/bootstrap.git#^3.3.6"
+    }
+}

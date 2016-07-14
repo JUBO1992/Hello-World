@@ -3,9 +3,17 @@
 
 <head>
     <title>index-首页</title>
+
+    <script>
+        function message() {
+            var obj = document.getElementById("e");
+            alert(obj.value)
+        }
+    </script>
 </head>
 
 <body>
+    <input type="text" id="e" value="" onblur="message()" />
     <h1>
     <a href="examples/ChartOnMap-bar.html">Link 1</a>
   </h1>
@@ -22,6 +30,8 @@
     <h2><a href="examples/BootStrap.html">BootStrap</a></h2>
     <h2><a href="examples/JQuery.html">JQuery</a></h2>
     <h2><a href="examples/AngularJS.html">AngularJS</a></h2>
+    <h2><a href="examples/Navigation.html">Navigation</a></h2>
+    <h2><a href="examples/OpenMap.html">ArcGIS API for JavaScript4.0</a></h2>
 </body>
 
 </html>
