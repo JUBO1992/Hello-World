@@ -16,8 +16,12 @@
         }
     </style>
 
+    <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css"></link>
+    <script src="https://js.arcgis.com/4.0/"></script>
+    <!--
     <link rel="stylesheet" href="http://localhost/arcgis_js_api/library/4.0/esri/css/main.css"></link>
     <script src="http://localhost/arcgis_js_api/library/4.0/init.js"></script>
+    -->
 
     <script>
         require([
@@ -26,11 +30,14 @@
             "esri/widgets/Compass",
             "esri/layers/FeatureLayer",
             "esri/layers/TileLayer",
+            "dijit/a11yclick",
+            "dojo/on",
+            "dojo/dom",
             "dojo/domReady!"
-        ], function(Map, MapView, Compass, FeatureLayer, TileLayer) {
+        ], function(Map, MapView, Compass, FeatureLayer, TileLayer, a11yclick, on, dom) {
 
             var map = new Map({
-                basemap: "streets"
+                basemap: "oceans"
             });
 
             var view = new MapView({
@@ -45,22 +52,117 @@
 
             view.ui.add(compassWidget, "top-left");
 
-            var featureLayer = new FeatureLayer({
+            var featureLayer0 = new FeatureLayer({
                 url: "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/0"
             });
-
-            var tileLayer = new TileLayer({
-                url: "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/2",
-                id: "streets",
-                visible: true
+            var featureLayer1 = new FeatureLayer({
+                url: "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/1"
             });
-            map.addMany([featureLayer]);
+            var featureLayer2 = new FeatureLayer({
+                url: "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/2"
+            });
+            map.add(featureLayer0);
+
+            var listNode = dom.byId("nyc_graphics");
+            on(listNode, on.selector("li", a11yclick), function(evt){
+                var id = evt.target.getAttribute("data-id");
+                alert(id);
+                map.removeAll();
+                map.add(featureLayer2);
+            });
         });
     </script>
+
+      <style>
+    html,
+    body,
+    #sceneDiv {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+    
+    .panel-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .panel-side {
+      padding: 2px;
+      box-sizing: border-box;
+      width: 300px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.6);
+      overflow: auto;
+      z-index: 60;
+    }
+    
+    .panel-side h2 {
+      padding: 0 20px;
+      margin: 20px 0;
+    }
+    
+    .panel-side ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .panel-side li {
+      list-style: none;
+      padding: 10px 20px;
+    }
+    
+    .panel-result {
+      cursor: pointer;
+      margin: 2px 0;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    .panel-result:hover,
+    .panel-result:focus {
+      color: orange;
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+  </style>
 </head>
 
 <body>
-    <div id="viewDiv"></div>
+    <div class="panel-container">
+        <div class="panel-side">
+            <h2>Marriage in NY by Zip</h2>
+            <ul id="nyc_graphics">
+                <li data-id="0" class="panel-result">FeatutreLayer0</li>
+                <li data-id="1" class="panel-result">FeatutreLayer1</li>
+                <li data-id="2" class="panel-result">FeatutreLayer2</li>
+                <li data-id="3" class="panel-result">FeatutreLayer3</li>
+                <li data-id="4" class="panel-result">FeatutreLayer4</li>
+                <li data-id="5" class="panel-result">FeatutreLayer5</li>
+                <li data-id="6" class="panel-result">FeatutreLayer6</li>
+                <li data-id="7" class="panel-result">FeatutreLayer7</li>
+                <li data-id="8" class="panel-result">FeatutreLayer8</li>
+                <li data-id="9" class="panel-result">FeatutreLayer9</li>
+                <li data-id="0" class="panel-result">FeatutreLayer0</li>
+                <li data-id="1" class="panel-result">FeatutreLayer1</li>
+                <li data-id="2" class="panel-result">FeatutreLayer2</li>
+                <li data-id="3" class="panel-result">FeatutreLayer3</li>
+                <li data-id="4" class="panel-result">FeatutreLayer4</li>
+                <li data-id="5" class="panel-result">FeatutreLayer5</li>
+                <li data-id="6" class="panel-result">FeatutreLayer6</li>
+                <li data-id="7" class="panel-result">FeatutreLayer7</li>
+                <li data-id="8" class="panel-result">FeatutreLayer8</li>
+                <li data-id="9" class="panel-result">FeatutreLayer9</li>
+            </ul>
+        </div>
+        <div id="viewDiv"></div>
+    </div>
 </body>
 
 </html>
