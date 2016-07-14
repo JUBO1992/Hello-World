@@ -36,8 +36,25 @@
             "dojo/domReady!"
         ], function(Map, MapView, Compass, FeatureLayer, TileLayer, a11yclick, on, dom) {
 
+            var layerurllists = [
+                "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/0",
+                "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/1",
+                "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/2"
+            ];
+            var localmaps =  layerurllists.map(function(layerurl){
+                var lyr = new FeatureLayer({url:layerurl});
+                return new Map({
+                    basemap: "oceans",
+                    layers: [lyr]
+                });
+            });
+
+            var featureLayer0 = new FeatureLayer({
+                url: "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/0"
+            });
             var map = new Map({
-                basemap: "oceans"
+                basemap: "oceans",
+                layers: [featureLayer0]
             });
 
             var view = new MapView({
@@ -52,86 +69,77 @@
 
             view.ui.add(compassWidget, "top-left");
 
-            var featureLayer0 = new FeatureLayer({
-                url: "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/0"
-            });
-            var featureLayer1 = new FeatureLayer({
-                url: "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/1"
-            });
-            var featureLayer2 = new FeatureLayer({
-                url: "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/2"
-            });
-            map.add(featureLayer0);
-
             var listNode = dom.byId("nyc_graphics");
             on(listNode, on.selector("li", a11yclick), function(evt){
                 var id = evt.target.getAttribute("data-id");
                 alert(id);
-                map.removeAll();
-                map.add(featureLayer2);
+                if (id) {
+                    var localmap = localmaps[id];
+                    view.map = localmap;
+                }
             });
         });
     </script>
 
-      <style>
-    html,
-    body,
-    #sceneDiv {
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-    }
-    
-    .panel-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-    
-    .panel-side {
-      padding: 2px;
-      box-sizing: border-box;
-      width: 300px;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #fff;
-      background-color: rgba(0, 0, 0, 0.6);
-      overflow: auto;
-      z-index: 60;
-    }
-    
-    .panel-side h2 {
-      padding: 0 20px;
-      margin: 20px 0;
-    }
-    
-    .panel-side ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .panel-side li {
-      list-style: none;
-      padding: 10px 20px;
-    }
-    
-    .panel-result {
-      cursor: pointer;
-      margin: 2px 0;
-      background-color: rgba(0, 0, 0, 0.3);
-    }
-    
-    .panel-result:hover,
-    .panel-result:focus {
-      color: orange;
-      background-color: rgba(0, 0, 0, 0.75);
-    }
-  </style>
+    <style>
+        html,
+        body,
+        #sceneDiv {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        
+        .panel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .panel-side {
+            padding: 2px;
+            box-sizing: border-box;
+            width: 300px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.6);
+            overflow: auto;
+            z-index: 60;
+        }
+        
+        .panel-side h2 {
+            padding: 0 20px;
+            margin: 20px 0;
+        }
+        
+        .panel-side ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .panel-side li {
+            list-style: none;
+            padding: 10px 20px;
+        }
+        
+        .panel-result {
+            cursor: pointer;
+            margin: 2px 0;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .panel-result:hover,
+        .panel-result:focus {
+            color: orange;
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+    </style>
 </head>
 
 <body>
