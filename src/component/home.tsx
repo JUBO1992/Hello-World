@@ -19,7 +19,7 @@ export class Home extends React.Component<HomeProps, {}> {
       });
     return (
       <div>
-      <div id="mapView" />
+      <div id="mapView" style={{ height: "500px",width: "800px",backgroundColor: "red"}}/>
         <h1>This is Home!!!</h1>
         <h1>This is Home!!!</h1>
         <h1>This is Home!!!</h1>

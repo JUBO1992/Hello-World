@@ -30,21 +30,24 @@
             "esri/widgets/Compass",
             "esri/layers/FeatureLayer",
             "esri/layers/TileLayer",
+            "esri/layers/MapImageLayer",
             "dijit/a11yclick",
             "dojo/on",
             "dojo/dom",
             "dojo/domReady!"
-        ], function(Map, MapView, Compass, FeatureLayer, TileLayer, a11yclick, on, dom) {
+        ], function(Map, MapView, Compass, FeatureLayer, TileLayer, MapImageLayer, a11yclick, on, dom) {
 
             var layerurllists = [
                 "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/0",
                 "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/1",
                 "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/2"
             ];
-            var localmaps =  layerurllists.map(function(layerurl){
-                var lyr = new FeatureLayer({url:layerurl});
+            var localmaps = layerurllists.map(function(layerurl) {
+                var lyr = new FeatureLayer({
+                    url: layerurl
+                });
                 return new Map({
-                    basemap: "oceans",
+                    //basemap: "oceans",
                     layers: [lyr]
                 });
             });
@@ -53,7 +56,7 @@
                 url: "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer/0"
             });
             var map = new Map({
-                basemap: "oceans",
+                //basemap: "oceans",
                 layers: [featureLayer0]
             });
 
@@ -70,10 +73,31 @@
             view.ui.add(compassWidget, "top-left");
 
             var listNode = dom.byId("nyc_graphics");
-            on(listNode, on.selector("li", a11yclick), function(evt){
+            on(listNode, on.selector("li", a11yclick), function(evt) {
                 var id = evt.target.getAttribute("data-id");
                 alert(id);
-                if (id) {
+                if (id > 6) {
+                    var maplayer = new MapImageLayer({
+                        url: "http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer"
+                    });
+                    var mmap = new Map({
+                        layers: [maplayer],
+                        sublayers: [{
+                            id: 0,
+                            visible: false
+                        }, {
+                            id: 1,
+                            visible: true
+                        }, {
+                            id: 2,
+                            visible: false
+                        }]
+                    });
+                    view.map = mmap;
+                    return;
+                } else {
+                    id = id % 3;
+                    alert(id);
                     var localmap = localmaps[id];
                     view.map = localmap;
                 }
