@@ -73,10 +73,12 @@
             on(listNode, on.selector("li", a11yclick), function(evt){
                 var id = evt.target.getAttribute("data-id");
                 alert(id);
-                if (id) {
-                    var localmap = localmaps[id];
-                    view.map = localmap;
+                if (id!=0 && id!=1 && id!=2) {
+                    id = 0;
                 }
+                alert(id);
+                var localmap = localmaps[id];
+                view.map = localmap;
             });
         });
     </script>

@@ -1,16 +1,18 @@
 {
     "compilerOptions": {
-        "outDir": "./dist/",
-        "module": "umd",
         "target": "es5",
+        "sourceMap": false,
+        "module": "umd",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
         "noImplicitAny": false,
-        "sourceMap": true,
-        "jsx": "react"
-    },
-    "exclude": [
-        "node_modules",
-        "bower_components",
-        "typings"
-    ],
-    "compileOnSave": true
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    }
 }
