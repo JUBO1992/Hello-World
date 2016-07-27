@@ -5,6 +5,7 @@ var gulp = require("gulp"),
   less = require("gulp-less"),
   sourcemaps = require("gulp-sourcemaps"),
   changed = require("gulp-changed"),
+  debug = require("gulp-debug"),
   browerSync = require("browser-sync").create();
 
 //clean task
@@ -32,14 +33,35 @@ gulp.task('build-tsx', function(){
     'src/**/*.tsx',
     'src/**/*.ts'
   ]).pipe(ts(tsProject))
-  .pipe(gulp.dest("dist/"));
+  .pipe(gulp.dest("dist/"))
+  .pipe(debug({title:"编译:"}));
+});
+
+gulp.task('build-changed-tsx', function(){
+  return gulp.src([
+    'src/**/*.tsx',
+    'src/**/*.ts'
+  ]).pipe(changed("dist",{extension: ".js"}))
+  .pipe(ts(tsProject))
+  .pipe(gulp.dest("dist/"))
+  .pipe(debug({title:"编译:"}));
 });
 
 gulp.task('build-less', function(){
   return gulp.src([
     'src/**/*.less'
   ]).pipe(less({paths: ['dist']}))
-  .pipe(gulp.dest("dist/"));
+  .pipe(gulp.dest("dist/"))
+  .pipe(debug({title:"编译:"}));
+});
+
+gulp.task('build-changed-less', function(){
+  return gulp.src([
+    'src/**/*.less'
+  ]).pipe(changed("dist",{extension: ".css"}))
+  .pipe(less({paths: ['dist']}))
+  .pipe(gulp.dest("dist/"))
+  .pipe(debug({title:"编译:"}));
 });
 
 gulp.task('build', ['build-tsx', 'build-less'], function(){
@@ -47,7 +69,18 @@ gulp.task('build', ['build-tsx', 'build-less'], function(){
     'src/**/*.js',
     'src/**/*.html',
     'src/**/*.png'
-  ]).pipe(gulp.dest("dist/"));
+  ]).pipe(gulp.dest("dist/"))
+  .pipe(debug({title:"拷贝:"}));
+});
+
+gulp.task('build-changed', ['build-changed-tsx', 'build-changed-less'], function(){
+  return gulp.src([
+    'src/**/*.js',
+    'src/**/*.html',
+    'src/**/*.png'
+  ]).pipe(changed("dist"))
+  .pipe(gulp.dest("dist/"))
+  .pipe(debug({title:"拷贝:"}));
 });
 
 gulp.task("default", ['build']);
@@ -57,6 +90,7 @@ gulp.task('watch', ['default'], function(){
   browerSync.init({
     server:'dist'
   });
-  gulp.watch(['src/**/*.*'], ["default"]);
-  gulp.watch(['dist/**/*.js', "dist/**/*.css"]).on('change', browerSync.reload);
+  gulp.watch(['src/**/*.*'], ["build-changed"]);
+  //下面一句代码运行十分费时间？？？？？
+  //gulp.watch(['dist/**/*.js', "dist/**/*.css"]).on('change', browerSync.reload);
 })

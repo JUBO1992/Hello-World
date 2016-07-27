@@ -11,7 +11,7 @@ export class Features extends React.Component<{}, {}>{
               <p className="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
             </div>
             <div className="col-md-5" style={{marginTop:20,marginBottom:20}}>
-              <img className="featurette-image img-responsive center-block" src="components/home/imgs/content1.png" alt="Generic placeholder image"></img>
+              <img className="featurette-image img-responsive center-block" src="home/imgs/content1.png" alt="Generic placeholder image"></img>
             </div>
           </div>
         </div>
@@ -22,7 +22,7 @@ export class Features extends React.Component<{}, {}>{
           <p className="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
         <div className="col-md-5 col-md-pull-7" style={{marginTop:20,marginBottom:20}}>
-          <img className="featurette-image img-responsive center-block" src="components/home/imgs/content1.png" alt="Generic placeholder image"></img>
+          <img className="featurette-image img-responsive center-block" src="home/imgs/content1.png" alt="Generic placeholder image"></img>
         </div>
       </div>
 
@@ -33,7 +33,7 @@ export class Features extends React.Component<{}, {}>{
             <p className="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
           </div>
           <div className="col-md-5" style={{marginTop:20,marginBottom:20}}>
-            <img className="featurette-image img-responsive center-block" src="components/home/imgs/content1.png" alt="Generic placeholder image"></img>
+            <img className="featurette-image img-responsive center-block" src="home/imgs/content1.png" alt="Generic placeholder image"></img>
           </div>
         </div>
       </div>
