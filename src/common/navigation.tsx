@@ -24,6 +24,7 @@ export class TopNav extends React.Component<TopNavProps, TopNavState>{
         <AALink href="#/resourceCenter">资源中心</AALink>
         <AALink href="#/resourceCenter">资源中心</AALink>
         <AALink href="#/resourceCenter">资源中心</AALink>
+        <AALink href="#/resourceCenter">资源中心</AALink>
       </Nav>
     );
   }
