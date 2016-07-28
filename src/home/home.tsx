@@ -12,9 +12,7 @@ export class Home extends React.Component<HomeProps, {}> {
     return (
       <div className="home">
         <TopNav/>
-      {/** 
         <Carousel/>
-      */}
         <Features/>
         <Footer/>
       </div>

@@ -1,11 +1,13 @@
 import * as React from "react";
 
+import digitalMapStyle = require("xstyle/css!./styles/digitalMap.css");
 import Map = require("esri/map");
 import ArcGISDynamicMapServiceLayer = require("esri/layers/ArcGISDynamicMapServiceLayer");
 
 export interface DigitalMapProps {}
 
 export class DigitalMap extends React.Component<DigitalMapProps, {}> {
+  static digitalMapStyle = digitalMapStyle;
   map: Map;
   mylayer: ArcGISDynamicMapServiceLayer;
   constructor() {
@@ -24,7 +26,7 @@ export class DigitalMap extends React.Component<DigitalMapProps, {}> {
   render() {
     return (
       <div>
-      <div id="mapView" style={{ height: "500px",width: "800px",backgroundColor: "blue"}}/>
+      <div id="mapView" style={{ height: 600,width: "100%",backgroundColor: "blue"}}/>
       </div>
     );
   }

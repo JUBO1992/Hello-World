@@ -33,5 +33,17 @@ var dojoConfig = {
         name: 'react-router',
         location: 'bower_components/react-router/umd',
         main: 'ReactRouter'
-    }]
+    }, {
+      name: 'react-bootstrap',
+      location: 'bower_components/react-bootstrap/dist',
+      main: 'react-bootstrap'
+    }, {
+      name: 'xstyle',
+      location: 'bower_components/xstyle'
+    }, {
+      name: 'put-selector',
+      location: 'bower_components/put-selector',
+      main: 'put'
+    }],
+  deps: ['xstyle/main']
 };

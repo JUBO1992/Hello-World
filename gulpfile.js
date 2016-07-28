@@ -77,7 +77,8 @@ gulp.task('build-changed', ['build-changed-tsx', 'build-changed-less'], function
     return gulp.src([
             'src/**/*.js',
             'src/**/*.html',
-            'src/**/*.png'
+            'src/**/*.png',
+            'src/**/*.jpg'
         ]).pipe(changed("dist"))
         .pipe(gulp.dest("dist/"))
         .pipe(debug({ title: "拷贝:" }));
@@ -96,6 +97,7 @@ gulp.task('watch', ['default'], function() {
     gulp.watch([
         'dist/common/**/*.*',
         'dist/digitalMap/**/*.*',
+        'dist/digitalAtlas/**/*.*',
         'dist/home/**/*.*',
         "dist/*.*"
     ]).on('change', browerSync.reload);
