@@ -68,7 +68,9 @@ gulp.task('build', ['build-tsx', 'build-less'], function() {
     return gulp.src([
             'src/**/*.js',
             'src/**/*.html',
-            'src/**/*.png'
+            'src/**/*.png',
+            'src/**/*.jpg',
+            'src/**/*.ico'
         ]).pipe(gulp.dest("dist/"))
         .pipe(debug({ title: "拷贝:" }));
 });
@@ -78,7 +80,8 @@ gulp.task('build-changed', ['build-changed-tsx', 'build-changed-less'], function
             'src/**/*.js',
             'src/**/*.html',
             'src/**/*.png',
-            'src/**/*.jpg'
+            'src/**/*.jpg',
+            'src/**/*.ico'
         ]).pipe(changed("dist"))
         .pipe(gulp.dest("dist/"))
         .pipe(debug({ title: "拷贝:" }));

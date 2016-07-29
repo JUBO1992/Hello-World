@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import navigationStyle=require("xstyle/css!./styles/navigation.css");
+
 export interface TopNavProps {
 }
 export interface TopNavState {
@@ -7,6 +9,7 @@ export interface TopNavState {
   hasSubmit?: boolean;
 }
 export class TopNav extends React.Component<TopNavProps, TopNavState>{
+  static navigationStyle = navigationStyle;
   constructor() {
     super();
     this.state = {
@@ -83,22 +86,23 @@ class Nav extends React.Component<NavigationProps, {}> {
 
   render() {
     return (
-      <nav className="navbar navbar-inverse navbar-fixed-top">
-        <div className="container">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-toggle" aria-expanded="false" aria-controls="navbar">
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
-            <a className="navbar-brand" href="#">{this.props.title}</a>
-          </div>
-          <div id="navbar-toggle" className="navbar-collapse collapse">
-            <ul className="nav navbar-nav">
-              {this.props.children}
-            </ul>
-            {/** 
+      <div>
+        <nav className="navbar navbar-inverse navbar-fixed-top">
+          <div className="container">
+            <div className="navbar-header">
+              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-toggle" aria-expanded="false" aria-controls="navbar">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
+              <a className="navbar-brand" href="#">{this.props.title}</a>
+            </div>
+            <div id="navbar-toggle" className="navbar-collapse collapse">
+              <ul className="nav navbar-nav">
+                {this.props.children}
+              </ul>
+              {/** 
             <ul className="nav navbar-nav navbar-right">
               <li><a className="navbar-brand" href="/cn/user/login/index">登录</a> </li>
               <li><a className="navbar-brand" href="/cn/user/register/index">注册</a></li>
@@ -107,15 +111,17 @@ class Nav extends React.Component<NavigationProps, {}> {
               </li>
             </ul>
             */}
-            <Login/>
+              <LoginButton/>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+        <LoginForm/>
+      </div>
     );
   }
 }
 
-var Login = React.createClass({
+var LoginButton = React.createClass({
   render: function () {
     return (
       <div>
@@ -124,7 +130,15 @@ var Login = React.createClass({
           <button type="button" className="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">注册</button>
           <button type="button" className="btn btn-primary"><i className="fa fa-search"></i></button>
         </form>
+      </div>
+    );
+  }
+});
 
+var LoginForm = React.createClass({
+  render: function () {
+    return (
+      <div>
         <div className="modal fade bs-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
@@ -132,16 +146,14 @@ var Login = React.createClass({
                 <form className="form-signin">
                   <h2 className="form-signin-heading">Please sign in</h2>
                   <label htmlFor="inputEmail" className="sr-only">Email address</label>
-                  {/** 
                   <input type="email" id="inputEmail" className="form-control" placeholder="Email address"></input>
                   <label htmlFor="inputPassword" className="sr-only">Password</label>
                   <input type="password" id="inputPassword" className="form-control" placeholder="Password"></input>
                   <div className="checkbox">
                     <label>
-                      <input type="checkbox" value="remember-me"> Remember me</input>
+                      <input type="checkbox" value="remember-me"/><p>Remember me</p>
                     </label>
                   </div>
-                  */}
                   <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                 </form>
               </div>
