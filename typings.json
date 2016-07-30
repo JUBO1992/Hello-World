@@ -5,6 +5,7 @@
         "dojo": "registry:dt/dojo#1.9.0+20160521151917",
         "echarts": "registry:dt/echarts#0.0.0+20160409144419",
         "react": "registry:dt/react#0.14.0+20160630100702",
+        "react-bootstrap": "registry:dt/react-bootstrap#0.0.0+20160713061231",
         "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
         "react-router": "registry:dt/react-router#2.0.0+20160621215300",
         "react-router/history": "registry:dt/react-router/history#2.0.0+20160608102730"

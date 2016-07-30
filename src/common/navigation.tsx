@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import navigationStyle=require("xstyle/css!./styles/navigation.css");
+import navigationStyle = require("xstyle/css!./styles/navigation.css");
 
 export interface TopNavProps {
 }
@@ -102,15 +102,6 @@ class Nav extends React.Component<NavigationProps, {}> {
               <ul className="nav navbar-nav">
                 {this.props.children}
               </ul>
-              {/** 
-            <ul className="nav navbar-nav navbar-right">
-              <li><a className="navbar-brand" href="/cn/user/login/index">登录</a> </li>
-              <li><a className="navbar-brand" href="/cn/user/register/index">注册</a></li>
-              <li>
-                <a className="navbar-brand" href="/cn/portal/search/ajax_index_page"> <i className="fa fa-search"></i> </a>
-              </li>
-            </ul>
-            */}
               <LoginButton/>
             </div>
           </div>
@@ -126,9 +117,11 @@ var LoginButton = React.createClass({
     return (
       <div>
         <form className="navbar-form navbar-right">
-          <button type="button" className="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">登录</button>
-          <button type="button" className="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">注册</button>
-          <button type="button" className="btn btn-primary"><i className="fa fa-search"></i></button>
+          <a href="#/loginPage" className="btn btn-primary active" role="button">登录页</a>
+          <a href="#/registerPage" className="btn btn-danger active" role="button">注册页</a>
+          <button type="button" className="btn btn-success" data-toggle="modal" data-target="#loginModal">登录</button>
+          <button type="button" className="btn btn-info" data-toggle="modal" data-target="#registerModal">注册</button>
+          <button type="button" className="btn btn-warning" data-toggle="modal" data-target="#searchModal"><i className="fa fa-search"></i></button>
         </form>
       </div>
     );
@@ -139,35 +132,61 @@ var LoginForm = React.createClass({
   render: function () {
     return (
       <div>
-        <div className="modal fade bs-example-modal-lg" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-          <div className="modal-dialog modal-lg">
+
+        <div className="modal fade" id="loginModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div className="modal-dialog" role="document">
             <div className="modal-content">
-              <div className="container">
-                <form className="form-signin">
-                  <h2 className="form-signin-heading">Please sign in</h2>
-                  <label htmlFor="inputEmail" className="sr-only">Email address</label>
-                  <input type="email" id="inputEmail" className="form-control" placeholder="Email address"></input>
-                  <label htmlFor="inputPassword" className="sr-only">Password</label>
-                  <input type="password" id="inputPassword" className="form-control" placeholder="Password"></input>
-                  <div className="checkbox">
-                    <label>
-                      <input type="checkbox" value="remember-me"/><p>Remember me</p>
-                    </label>
-                  </div>
-                  <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                </form>
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times; </span></button>
+                <h4 className="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div className="modal-body">
+                ...
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="modal fade bs-example-modal-sm" tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-          <div className="modal-dialog modal-sm">
+        <div className="modal fade" id="registerModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div className="modal-dialog" role="document">
             <div className="modal-content">
-              ...
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times; </span></button>
+                <h4 className="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div className="modal-body">
+                ...
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Save changes</button>
+              </div>
             </div>
           </div>
         </div>
+
+        <div className="modal fade" id="searchModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times; </span></button>
+                <h4 className="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div className="modal-body">
+                ...
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     );
   }
