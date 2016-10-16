@@ -9,6 +9,9 @@ import ArcGISTiledMapServiceLayer = require("esri/layers/ArcGISTiledMapServiceLa
 import Scalebar = require("esri/dijit/Scalebar");
 import Point = require("esri/geometry/Point");
 
+import {ToolsBar} from "./toolsBar"
+import {MeasureTool} from "./measureTool"
+
 import mapStyle = require("xstyle/css!./styles/map.css");
 
 
@@ -35,6 +38,8 @@ export class Map extends React.Component<MapProps, MapStates> {
     let map = this.createMap(initMapConfig.centerCoords, initMapConfig.zoom);
     this.addLayer(initMapConfig.vector);
     this.addScaleBar(map);//添加比例尺
+    this.refs.toolsBar.setEsriMap(map);
+    this.refs.measureTool.setEsriMap(map);
   }
 
   public addLayer(layerConfig) {
@@ -108,12 +113,17 @@ export class Map extends React.Component<MapProps, MapStates> {
   }
 
   refs: {
-    [string: string]: any;
+    [key: string]: any;
     map: HTMLDivElement;
+    toolsBar: ToolsBar;
+    measureTool: MeasureTool;
   }
+
   render() {
     return (
       <div className="map"  ref="map">
+        <ToolsBar ref="toolsBar"/>
+        <MeasureTool ref="measureTool"/>
         {this.props.children}
       </div>
     );

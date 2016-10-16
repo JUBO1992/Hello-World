@@ -27,7 +27,8 @@
     "bootstrap-social": "./node_modules/bootstrap-social",
     "pace": "./node_modules/pace-js",
     "react-bootstrap": "./node_modules/react-bootstrap",
-    "antd": "./node_modules/antd"
+    "antd": "./node_modules/antd",
+    "react-draggable": "./node_modules/react-draggable"
   },
   "resolutions": {
     "dojo": "v1.10.4/esri-3.14.0"

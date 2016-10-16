@@ -12,7 +12,7 @@ export class Footer extends React.Component<{}, {}>{
       <footer className="pane bg-npm-navy-1">
         <div className="container">
           <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-2 col-md-offset-2">
               <h3 className="h4 type-npm-pastel-3">You Need Help</h3>
               <hr className="divider-1"/>
               <ul className="list-unstyled h6 em-default">
@@ -25,7 +25,7 @@ export class Footer extends React.Component<{}, {}>{
               </ul>
             </div>
 
-            <div className="col-md-4">
+            <div className="col-md-2 col-md-offset-1">
               <h3 className="h4 type-npm-pastel-3">About npm</h3>
               <hr className="divider-1"/>
               <ul className="list-unstyled h6 em-default">
@@ -38,7 +38,7 @@ export class Footer extends React.Component<{}, {}>{
               </ul>
             </div>
 
-            <div className="col-md-4">
+            <div className="col-md-2 col-md-offset-1">
               <h3 className="h4 type-npm-pastel-3">Legal Stuff</h3>
               <hr className="divider-1"/>
               <ul className="list-unstyled h6 em-default">

@@ -48,12 +48,16 @@ let dojoConfig = {
       name: 'antd',
       location: 'bower_components/antd/dist',
       main: 'antd'
+    }, {
+      name: 'react-draggable',
+      location: 'bower_components/react-draggable/dist',
+      main: 'react-draggable'
     }],
   deps: ['xstyle/main']
 };
 
 //初始化加载地图
-let arcgisServerIp = "localhost:6080";
+let arcgisServerIp = "192.168.21.152:6080";
 let databaseName = "gangu";
 let mapNamesAndType = {
   //矢量
