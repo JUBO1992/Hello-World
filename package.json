@@ -8,6 +8,7 @@
   "license": "ISC",
   "dependencies": {
     "animate.css": "^3.5.1",
+    "antd": "^2.0.1",
     "bootstrap": "^3.3.6",
     "bootstrap-social": "^5.0.0",
     "font-awesome": "^4.6.3",
@@ -30,6 +31,6 @@
     "gulp-tslint": "^6.0.1",
     "gulp-typescript": "^2.13.6",
     "tslint": "^3.13.0",
-    "typescript": "^1.8.10"
+    "typescript": "^2.0.3"
   }
 }

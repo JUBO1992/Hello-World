@@ -1,57 +1,52 @@
+/// <reference path="styles.d.ts" />
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-import digitalAtlasStyle = require("xstyle/css!./styles/digitalAtlas.css")
-import Map = require("esri/map");
-import ArcGISDynamicMapServiceLayer = require("esri/layers/ArcGISDynamicMapServiceLayer");
+import {TopNav} from "../common/topNav"
+import {SidePanel} from "./sidePanel"
+import { Map } from "../map/map";
 
-export interface DigitalAtlasProps { }
+import digitalAtlasStyle = require("xstyle/css!./styles/digitalAtlas.css");
 
-export class DigitalAtlas extends React.Component<DigitalAtlasProps, {}> {
+export interface DigitalAtlasProps {
+}
+export interface DigitalAtlasState {
+}
+
+export class DigitalAtlas extends React.Component<DigitalAtlasProps, DigitalAtlasState> {
+  /**
+   * 电子图集
+   */
   static digitalAtlasStyle = digitalAtlasStyle;
-  map: Map;
-  mylayer: ArcGISDynamicMapServiceLayer;
-  constructor() {
-    super();
+  _map: Map;
+  constructor(props: DigitalAtlasProps, state: DigitalAtlasState) {
+    super(props);
   }
   componentDidMount() {
-    this.createMap();
+    this._map = this.refs.map;
   }
-
-  private createMap() {
-    this.mylayer = new ArcGISDynamicMapServiceLayer("http://localhost:6080/arcgis/rest/services/SampleWorldCities/MapServer");
-    this.map = new Map("mapView");
-    this.map.addLayer(this.mylayer);
-  }
-
+  refs: {
+    [key: string]: any;
+    digitalAtlas: HTMLDivElement;
+    map: Map;
+    sidePanel: SidePanel;
+  };
   render() {
     return (
-      <div className="panel-container">
-        <div className="panel-side">
-          <h2>此处添加标题</h2>
-          <ul id="nyc_graphics">
-            <li data-id="0" className="panel-result">FeatutreLayer0</li>
-            <li data-id="1" className="panel-result">FeatutreLayer1</li>
-            <li data-id="2" className="panel-result">FeatutreLayer2</li>
-            <li data-id="3" className="panel-result">FeatutreLayer3</li>
-            <li data-id="4" className="panel-result">FeatutreLayer4</li>
-            <li data-id="5" className="panel-result">FeatutreLayer5</li>
-            <li data-id="6" className="panel-result">FeatutreLayer6</li>
-            <li data-id="7" className="panel-result">FeatutreLayer7</li>
-            <li data-id="8" className="panel-result">FeatutreLayer8</li>
-            <li data-id="9" className="panel-result">FeatutreLayer9</li>
-            <li data-id="0" className="panel-result">FeatutreLayer0</li>
-            <li data-id="1" className="panel-result">FeatutreLayer1</li>
-            <li data-id="2" className="panel-result">FeatutreLayer2</li>
-            <li data-id="3" className="panel-result">FeatutreLayer3</li>
-            <li data-id="4" className="panel-result">FeatutreLayer4</li>
-            <li data-id="5" className="panel-result">FeatutreLayer5</li>
-            <li data-id="6" className="panel-result">FeatutreLayer6</li>
-            <li data-id="7" className="panel-result">FeatutreLayer7</li>
-            <li data-id="8" className="panel-result">FeatutreLayer8</li>
-            <li data-id="9" className="panel-result">FeatutreLayer9</li>
-          </ul>
+      <div className="digitalAtlas" ref="digitalAtlas"> This is a test.
+        <div className="digitalAtlasTop">
+          <TopNav />
         </div>
-        <div id="mapView"/>
+        <div className="digitalAtlasMid">
+          <div className="digitalAtlasMidleft">
+            <SidePanel ref="sidePanel" />
+          </div>
+          <div className="digitalAtlasMidright">
+            {/* */}
+            <Map ref="map">
+            </Map>
+          </div>
+        </div>
       </div>
     );
   }

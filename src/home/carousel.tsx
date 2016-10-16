@@ -1,58 +1,34 @@
-import * as React from "react";
+/// <reference path="styles.d.ts" />
+import * as React from 'react';
+import {Router, Link} from 'react-router';
+import {Navbar, Nav, NavItem, Table, Button, NavDropdown, Carousel} from 'react-bootstrap';
 
-import carouselStyle = require("xstyle/css!./styles/carousel.css");
+import carouselStyle=require("xstyle/css!./styles/carousel.css");
 
-export class Carousel extends React.Component<{}, {}> {
-  static carouselStyle = carouselStyle;
-  render(){
-    return(
-      <div id="myCarousel" className="carousel slide" data-ride="carousel">
-          <ol className="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-         </ol>
-        <div className="carousel-inner" role="listbox">
-          <div className="item active">
-            <img className="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide"></img>
-            <div className="container">
-              <div className="carousel-caption">
-                <h1>Example headline.</h1>
-                <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                <p><a className="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-              </div>
+export interface CarouselProps { }
+export class CustomCarousel extends React.Component<CarouselProps, {}>{
+    static carouselStyle=carouselStyle;
+    render() {
+        return (
+            <div className="Carouselcontainer">
+                <Carousel>
+                    <Carousel.Item>
+                        <img width={1920} height={500} alt="900x500" src="home/imgs/banner1.png"/>
+                        <Carousel.Caption>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img width={1920} height={500} alt="900x500" src="home/imgs/banner1.png"/>
+                        <Carousel.Caption>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img width={1920} height={500} alt="900x500" src="home/imgs/banner1.png"/>
+                        <Carousel.Caption>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
             </div>
-          </div>
-          <div className="item">
-            <img className="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide"></img>
-            <div className="container">
-              <div className="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a className="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div className="item">
-            <img className="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide"></img>
-            <div className="container">
-              <div className="carousel-caption">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a className="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a className="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-          <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          <span className="sr-only">Previous</span>
-        </a>
-        <a className="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-          <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          <span className="sr-only">Next</span>
-        </a>
-      </div>
-    );
-  }
+        );
+    }
 }

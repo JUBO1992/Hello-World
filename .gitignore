@@ -4,8 +4,7 @@
 # Ignore in this project
 node_modules/
 bower_components/
-typings/
-dist/
+dest/
 
 # User-specific files
 *.suo

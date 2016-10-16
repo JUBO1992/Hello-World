@@ -1,59 +1,43 @@
 @import "../../bower_components/esri/css/esri.css";
-
-html,
-body,
-#mapView {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+@nav-height :50px;
+@sidePanel-width:275px;
+.digitalAtlas{
+	width:100%;
+	height:100%;
+	overflow: hidden;
 }
-
-.panel-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
+.digitalAtlasTop{
+	position: absolute;
+	top:0px;
+  height:@nav-height;
+  width:100%;
+	background-color:white;
 }
-
-.panel-side {
-    padding: 2px;
-    box-sizing: border-box;
-    width: 300px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.6);
-    overflow: auto;
-    z-index: 60;
+.digitalAtlasMid{
+	position: absolute;
+	top:@nav-height;
+	bottom:0px;
+	width:100%;
+	background-color: white;
 }
-
-.panel-side h2 {
-    padding: 0 20px;
-    margin: 20px 0;
+.digitalAtlasMidleft{
+	position: absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	width:@sidePanel-width;
+	background-color: white;
+	// 阴影
+	-moz-box-shadow: 1px 0px 2px #333333;
+	-webkit-box-shadow: 1px 0px 2px #333333;
+	box-shadow: 1px 0px 2px #333333;
+	z-index:300;
 }
-
-.panel-side ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.panel-side li {
-    list-style: none;
-    padding: 10px 20px;
-}
-
-.panel-result {
-    cursor: pointer;
-    margin: 2px 0;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.panel-result:hover,
-.panel-result:focus {
-    color: orange;
-    background-color: rgba(0, 0, 0, 0.75);
+.digitalAtlasMidright{
+	position: absolute;
+	top:0px;
+	bottom:0px;
+	left:@sidePanel-width;
+	right:0px;
+	background-color: rgb(236,236,236);
 }

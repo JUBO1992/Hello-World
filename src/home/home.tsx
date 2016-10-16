@@ -1,20 +1,26 @@
 import * as React from "react";
-import {TopNav} from "../common/navigation"
+import {TopNav} from "../common/topNav"
 import {Footer} from "../common/footer"
-import {Carousel} from "./carousel"
-import {Features} from "./features"
+import {CustomCarousel} from "./carousel"
+import {Content} from "./content"
 
-export interface HomeProps {}
+import homeStyle=require("xstyle/css!./styles/home.css");
 
-export class Home extends React.Component<HomeProps, {}> {
+export class Home extends React.Component<{}, {}> {
+
+  static homeStyle= homeStyle;
 
   render() {
     return (
       <div className="home">
-        <TopNav/>
-        <Carousel/>
-        <Features/>
-        <Footer/>
+        <div className="homeTop">
+          <TopNav/>
+        </div>
+        <div className=" homeContent scroll-1">
+          <CustomCarousel/>
+          <Content/>
+          <Footer/>
+        </div>
       </div>
     );
   }
