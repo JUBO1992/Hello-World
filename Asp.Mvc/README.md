@@ -12,13 +12,18 @@
 
 `webpack --config webpack.config.vendor.js`
 
+解压Asp.Mvc/wwwroot/arcgis_js_api.rar到Asp.Mvc/wwwroot下
+
+
 # 调试
 `set ASPNETCORE_ENVIRONMENT=Development`
 
 `dotnet run`
 
+
 # 运行
 `dotnet run`
+
 
 # 发布
 `set ASPNETCORE_ENVIRONMENT=Production`
