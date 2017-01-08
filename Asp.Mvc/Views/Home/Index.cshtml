@@ -1,0 +1,26 @@
+@if(ViewBag.NeedArcgisJsApi) {
+<text>
+	@section head {
+	<link rel="stylesheet" href="~/arcgis_js_api/library/3.18/3.18/esri/css/esri.css" />
+	<link rel="stylesheet" href="~/arcgis_js_api/library/3.18/3.18/dijit/themes/claro/claro.css" />
+
+	<script src="~/arcgis_js_api/library/3.18/3.18/init.js"></script>
+	<script>
+		require(['geowit/InfoWindowModel','geowit/GeometryUtils'], function(InfoWindowModel, GeometryUtils){
+			window.InfoWindowModel = InfoWindowModel;
+			window.GeometryUtils = GeometryUtils;
+		});
+	</script>}
+</text>
+}
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="react-app">
+  <img style="position:absolute; top:50%; left:50%" src="~/loading.gif" alt="正在加载..." />
+</div>
+
+@section scripts {
+    <script src="~/dist/main.js" asp-append-version="true"></script>
+}

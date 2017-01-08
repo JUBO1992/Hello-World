@@ -1,0 +1,111 @@
+@import (reference) "../../../styles/site";
+.helpCenter {
+  position: relative;
+	padding-top: @nav-height; 
+  min-height: 100%;
+  padding-bottom: @footer-height;
+}
+
+.newTitle{
+    background: url("../imgs/news11.png") no-repeat scroll center center rgba(255, 255, 255, 0);
+    height: 10px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.h3{
+    font-size:16px; 
+    text-align: center
+}
+.thumbnail{
+    border: none;
+    h4{
+      text-align: center;
+      color: #000;
+    }
+}
+.thumbnail:hover{
+    h4{
+        color: dodgerblue;
+    }
+    p{
+        color: dodgerblue;
+        text-align: center
+    }
+}
+
+.digitalImg{
+  width: 100%;
+  height: auto;
+}
+.span{
+    color: snow;
+}
+.learnMore{
+    position: absolute;
+    margin-top: -130px;
+    margin-left: 310px;
+    border: 1px solid snow;
+    font-size: 16px;
+    padding: 5px 30px;
+}
+.learnMore:hover{
+    background: #2db7f5;
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+
+.landinfo{
+    margin-top: 100px;
+    margin-bottom: 100px
+}
+.item-wrapper{
+    background: #ddd;
+    background-size: cover;
+    position: relative;
+    height: 140px;
+}
+.typical>.container{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.ThemeItem{
+    padding: 6px 2px 16px 2px;
+    margin-bottom: 40px;
+    margin-left: 32px;
+    width: 250px;
+    height: 277px;
+    background: #f0efeb;
+    //box-shadow: 3px 3px 3px #656666;
+    transition: background-color 0.3s linear;
+    display: inline-block;
+    h5{
+        color:black;
+        text-align: center;
+        text-overflow: ellipsis;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+     h6{
+         text-indent: 24px;
+        padding: 0px 10px;
+        line-height: 20px;
+         text-align: left;
+         margin-top: 10px;
+        color:black;
+        text-overflow: ellipsis;
+        margin-bottom: 10px;
+    }
+}
+.ThemeItem:hover{
+    background: #337fe5;
+    h5{
+        color:white;
+    }
+     h6{
+        color:white;
+    }
+}

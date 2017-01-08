@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/867ca84ab6cf3ebb8f68d36054e830638d587b29/arcgis-js-api/arcgis-js-api.d.ts",
+    "raw": "registry:dt/arcgis-js-api#3.18.0+20160923201745",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/867ca84ab6cf3ebb8f68d36054e830638d587b29/arcgis-js-api/arcgis-js-api.d.ts"
+  }
+}

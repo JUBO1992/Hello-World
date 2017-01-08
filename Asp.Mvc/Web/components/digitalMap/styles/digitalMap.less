@@ -1,0 +1,30 @@
+@import (reference) "../../../styles/site";
+@sidePanel-width:275px;
+.digitalMap{
+  position: absolute;
+  width: 100%;
+	top: @nav-height; 
+  bottom: 0px;
+  overflow: hidden;
+}
+.digitalMapLeft{
+  position: absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	width:@sidePanel-width;
+	background-color: white;
+	// 阴影
+	-moz-box-shadow: 1px 0px 2px #333333;
+	-webkit-box-shadow: 1px 0px 2px #333333;
+	box-shadow: 1px 0px 2px #333333;
+	z-index:300;
+}
+.digitalMapRight{
+	position: absolute;
+	top:0px;
+	bottom:0px;
+	left:@sidePanel-width;
+	right:0px;
+	background-color: rgb(236,236,236);
+}
