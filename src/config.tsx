@@ -57,23 +57,23 @@ let dojoConfig = {
 };
 
 //初始化加载地图
-let arcgisServerIp = "192.168.21.152:6080";
+let arcgisServerIp = "127.0.0.1:6080";
 let databaseName = "gangu";
 let mapNamesAndType = {
   //矢量
   vector: {
-    name: "DZDT_DZDT",
-    type: "dynamic"//"dynamic"或"cached"
+    name: "JCSJ_SLDT",
+    type: "cached"//"dynamic"或"cached"
   },
   //影像
   image: {
-    name: "DZDT_YXDT",
-    type: "dynamic"
+    name: "JCSJ_YXDT",
+    type: "cached"
   },
   //注记
   label: {
-    name: "DZDT_DMDZ",
-    type: "dynamic"
+    name: "JCSJ_YXZJ",
+    type: "cached"
   }
 };
 
@@ -97,7 +97,7 @@ let initMapConfig = {
     layerType: mapNamesAndType.label.type,
     visible: false
   },
-  centerCoords: [105.293363, 34.854502],
-  zoom: 4,
+  centerCoords: [105.272429, 34.805399],
+  zoom: 11,
   wkid: 4490
 };
