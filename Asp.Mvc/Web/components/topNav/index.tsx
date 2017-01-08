@@ -58,6 +58,9 @@ export class TopNav extends React.Component<TopNavProps, TopNavState>{
                   <Link to="/helpCenter">帮助中心</Link>
                 </li>
                 <li>
+                  <Link to="/gameCenter">游戏中心</Link>
+                </li>
+                <li>
                   <Link to="/">登录</Link>
                 </li>
               </ul>

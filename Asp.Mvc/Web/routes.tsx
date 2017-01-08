@@ -47,6 +47,12 @@ export default <Route component={ Layout }>
         cb(null, { body: userManager.UserManager });
       });
     } } />
+    <Route path='/gameCenter' getComponents={(nextState, cb) => {
+      require.ensure(['./components/gameCenter'], (require) => {
+        let gameCenter = require<any>('./components/gameCenter');
+        cb(null, { body: gameCenter.GameCenter });
+      });
+    } } />
 </Route>;
 
 // Allow Hot Module Reloading
