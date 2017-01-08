@@ -12,15 +12,28 @@ First GitHub Project!<br/>
 ## 
 ```
 Hello-World/
-├── examples/
-│   ├── CitizenRequest.html
-│   ├── EChart.html
-│   ├── MeasureTool.html
-│   └── ShowMap.html
+├── src/
+│   ├── common/...
+│   ├── digitalAtlas/...
+│   ├── digitalMap/...
+│   ├── home/...
+│   ├── map/...
+│   ├── config.tsx
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── index.less
+│   └── index.tsx
+├── typings/
+│   ├── globals/...
+│   └── index.d.ts
+├── .bowerrc
 ├── .gitignore
-├── index.html
+├── README.md
+├── bower.json
+├── gulpfile.js
 ├── package.json
-└── README.md
+├── tsconfig.json
+└── typings.json
 ```
 ----------
 ## 开发环境
