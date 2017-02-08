@@ -5,6 +5,7 @@
 
 # 本项目排除项
 /wwwroot/arcgis_js_api/
+/Web/components/gameCenter/exampleSource/
 
 # User-specific files
 *.suo
