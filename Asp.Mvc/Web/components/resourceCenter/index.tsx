@@ -1,8 +1,8 @@
 import "./styles/resourceCenter.less";
 
 import * as React from "react";
-import {Footer} from "../footer"
-// import { Card } from "antd";
+import { Footer } from "../footer"
+import { Button } from "antd";
 import Echarts = require("echarts");
 
 export interface ResourceCenterProps {
@@ -81,12 +81,21 @@ export class ResourceCenter extends React.Component<ResourceCenterProps, Resourc
     return (
       <div className="resourceCenter" style={{ textAlign: 'center' }}>
         <span style={{ display: 'inherit' }}>This is ResourceCenter!</span>
+        <Button type="primary" shape="circle" icon="search" />
+        <Button type="primary" icon="search">Search</Button>
+        <Button shape="circle" icon="search" />
+        <Button icon="search">Search</Button>
+        <br />
+        <Button shape="circle" icon="search" />
+        <Button icon="search">Search</Button>
+        <Button type="dashed" shape="circle" icon="search" />
+        <Button type="dashed" icon="search">Search</Button>
         <div style={{ position: 'relative', width: '100%', paddingBottom: '500px' }}>
-          <div ref="graphicDiv1" style={{ width: '50%', height: '500px', float: 'left' }}/>
-          <div ref="graphicDiv2" style={{ width: '50%', height: '500px', float: 'right' }}/>
+          <div ref="graphicDiv1" style={{ width: '50%', height: '500px', float: 'left' }} />
+          <div ref="graphicDiv2" style={{ width: '50%', height: '500px', float: 'right' }} />
         </div>
-        <div ref="graphicDiv3" style={{ width: '100%', height: '500px'/*, float: 'left'*/ }}/>
-        <div ref="graphicDiv4" style={{ width: '100%', height: '500px'/*, float: 'right'*/ }}/>
+        <div ref="graphicDiv3" style={{ width: '100%', height: '500px'/*, float: 'left'*/ }} />
+        <div ref="graphicDiv4" style={{ width: '100%', height: '500px'/*, float: 'right'*/ }} />
         <Footer />
       </div>
     );

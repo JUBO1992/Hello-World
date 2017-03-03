@@ -37,12 +37,6 @@ export class SidePanel extends React.Component<SidePanelProps, SidePanelStates> 
           <li><div onClick={this.handleClick.bind(this,7)}><span>HTMLGAME_NO008</span></div></li>
           <li><div onClick={this.handleClick.bind(this,8)}><span>HTMLGAME_NO009</span></div></li>
           <li><div onClick={this.handleClick.bind(this,9)}><span>HTMLGAME_NO010</span></div></li>
-          <li><div onClick={this.handleClick.bind(this,10)}><span>HTMLGAME_NO011</span></div></li>
-          <li><div onClick={this.handleClick.bind(this,11)}><span>HTMLGAME_NO012</span></div></li>
-          <li><div onClick={this.handleClick.bind(this,12)}><span>HTMLGAME_NO013</span></div></li>
-          <li><div onClick={this.handleClick.bind(this,13)}><span>HTMLGAME_NO014</span></div></li>
-          <li><div onClick={this.handleClick.bind(this,14)}><span>HTMLGAME_NO015</span></div></li>
-          <li><div onClick={this.handleClick.bind(this,15)}><span>HTMLGAME_NO016</span></div></li>
         </ul>
       </div>
     );
