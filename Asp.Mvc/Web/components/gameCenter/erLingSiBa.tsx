@@ -13,6 +13,13 @@ export class ErLingSiBa extends React.Component<ErLingSiBaProps, ErLingSiBaState
   constructor() {
     super();
   }
+
+  componentDidMount() {
+  }
+
+  newgame(e){
+  }
+
   refs: {
     [key: string]: any;
   }
@@ -22,7 +29,7 @@ export class ErLingSiBa extends React.Component<ErLingSiBaProps, ErLingSiBaState
       <div  style={{ width: '100%', height: '100%', display: 'inline-flex', overflow: 'hidden' }}>
         <div className="ErLingSiBa" id="ErLingSiBa"  style={{ margin: 'auto' }}>
           <div className="header">
-            <a href="javascript:newgame();" id="newgamebutton"  onclick="newgame()">重新开始</a>
+            <a href="javascript:newgame();" id="newgamebutton"  onClick={this.newgame.bind(this)}>重新开始</a>
             <p>得分: <span id="score">0</span></p>
           </div>
 
