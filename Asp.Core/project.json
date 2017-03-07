@@ -1,17 +1,16 @@
 {
-  "version": "1.0.0-*",
-  "dependencies": {
-  },
-  "frameworks": {
-    "netstandard1.2": {
-      "dependencies": {
-        "System.Runtime": "4.1.0",
-        "System.Linq": "4.1.0",
-        "System.Linq.Expressions": "4.1.0"
-      }
+    "version": "1.0.0-*",
+    "dependencies": {},
+    "frameworks": {
+        "netstandard1.2": {
+            "dependencies": {
+                "System.Runtime": "4.1.0",
+                "System.Linq": "4.1.0",
+                "System.Linq.Expressions": "4.1.0"
+            }
+        }
+    },
+    "tooling": {
+        "defalutNamespace": "Asp.Core"
     }
-  },
-  "tooling": {
-    "defalutNamespace": "Asp.Core"
-  }
 }

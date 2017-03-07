@@ -1,0 +1,17 @@
+{
+    "version": "1.0.0-*",
+    "dependencies": {
+        "Asp.Core": "1.0.0-*",
+        "Newtonsoft.Json": "9.0.1"
+    },
+    "frameworks": {
+        "net451": {
+            "dependencies": {
+                "System.Data.Common": "4.1.0"
+            }
+        }
+    },
+    "tooling": {
+        "defaultNamespace": "Asp.Xpo"
+    }
+}

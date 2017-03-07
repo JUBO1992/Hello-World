@@ -33,7 +33,7 @@ export class TuiXiangZi extends React.Component<TuiXiangZiProps, TuiXiangZiState
     right: require<string>("./imgs/tuiXiangZi/right.png")
   };
   //Image资源对象
-  block: any; wall: any; box: any; okbox: any;ball: any;
+  block: any; wall: any; box: any; okbox: any; ball: any;
   up: any; down: any; left: any; right: any;
   perPosition: Point = new Point(0, 0);// 小人位置
 
@@ -43,9 +43,6 @@ export class TuiXiangZi extends React.Component<TuiXiangZiProps, TuiXiangZiState
 
   componentDidMount() {
     this.cxt = this.refs.canvas.getContext("2d");//画布
-    this.curMap = this.copyArray(levels[this.iCurlevel]);//当前移动过的游戏地图
-    this.curLevel = levels[this.iCurlevel];//当前等级的初始地图
-    this.curMan = this.down;//初始化小人
     let count = 0, images = {};
     for (let img in this.oImgs) {
       images[img] = new Image();
@@ -192,7 +189,7 @@ export class TuiXiangZi extends React.Component<TuiXiangZiProps, TuiXiangZiState
     for (var i = 0; i < this.curMap.length; i++) {
       for (var j = 0; j < this.curMap[i].length; j++) {
         //当前移动过的地图和初始地图进行比较，若果初始地图上的陷进参数在移动之后不是箱子的话就指代没推成功
-        if (this.curLevel[i][j] == 2 && this.curMap[i][j] != 3 || this.curLevel[i][j] == 5 && this.curMap[i][j] != 3) {
+        if ((this.curLevel[i][j] == 2 || this.curLevel[i][j] == 5) && this.curMap[i][j] != 5) {
           return false;
         }
       }
@@ -207,11 +204,15 @@ export class TuiXiangZi extends React.Component<TuiXiangZiProps, TuiXiangZiState
     if (p1.y > this.curMap[0].length) return false;//若果超出地图的右边，不通过
     if (this.curMap[p1.x][p1.y] == 1) return false;//若果前面是墙，不通过
     if (this.curMap[p1.x][p1.y] == 3 || this.curMap[p1.x][p1.y] == 5) {//若果小人前面是箱子那就还需要判断箱子前面有没有障碍物(箱子/墙)
-      if (this.curMap[p2.x][p2.y] == 1 || this.curMap[p2.x][p2.y] == 3) {
+      if (this.curMap[p2.x][p2.y] == 1 || this.curMap[p2.x][p2.y] == 3 || this.curMap[p2.x][p2.y] == 5) {
         return false;
       }
-      //若果判断不成功小人前面的箱子前进一步
-      this.curMap[p2.x][p2.y] = 3;//更改地图对应坐标点的值
+      //此时前面无障碍，小人前面的箱子前进一步
+      if (this.curMap[p2.x][p2.y] == 2) {
+        this.curMap[p2.x][p2.y] = 5;//更改地图对应坐标点的值
+      } else {
+        this.curMap[p2.x][p2.y] = 3;//更改地图对应坐标点的值
+      }
       //console.log(curMap[p2.x][p2.y]);
     }
     //若果都没判断成功小人前进一步
@@ -257,7 +258,7 @@ export class TuiXiangZi extends React.Component<TuiXiangZiProps, TuiXiangZiState
   }
   //游戏说明
   private ShowHelp() {
-    alert("用键盘上的上、下、左、右键移动小人，把箱子全部推到小球的位置即可过关。\n"+"箱子只可向前推，不能往后拉，并且小人一次只能推动一个箱子。");
+    alert("用键盘上的上、下、左、右键移动小人，把箱子全部推到小球的位置即可过关。\n" + "箱子只可向前推，不能往后拉，并且小人一次只能推动一个箱子。");
   }
   refs: {
     [key: string]: any;
@@ -272,10 +273,10 @@ export class TuiXiangZi extends React.Component<TuiXiangZiProps, TuiXiangZiState
           <canvas ref="canvas" id="tuiXiangZi-canvas" width="560" height="560" style={{ float: 'left' }}></canvas>
           <div style={{ textAlign: 'center', float: 'right', marginTop: 200 }}>
             <div ref="msg" id="tuiXiangZi-msg">第1关&nbsp; 移动次数：0</div>
-            <div><input type="button" value="上一关" onClick={this.NextLevel.bind(this, -1) }/></div>
-            <div><input type="button" value="下一关" onClick={this.NextLevel.bind(this, 1) }/></div>
-            <div><input type="button" value="重玩本关" onClick={this.NextLevel.bind(this, 0) }/></div>
-            <div><input type="button" value="游戏说明" onClick={this.ShowHelp.bind(this) }/></div>
+            <div><input type="button" value="上一关" onClick={this.NextLevel.bind(this, -1)} /></div>
+            <div><input type="button" value="下一关" onClick={this.NextLevel.bind(this, 1)} /></div>
+            <div><input type="button" value="重玩本关" onClick={this.NextLevel.bind(this, 0)} /></div>
+            <div><input type="button" value="游戏说明" onClick={this.ShowHelp.bind(this)} /></div>
           </div>
         </div>
       </div>

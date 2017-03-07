@@ -1,4 +1,4 @@
-namespace Asp.Core
+namespace Asp.Core.Models
 {
     public interface IBaseObject
     {
