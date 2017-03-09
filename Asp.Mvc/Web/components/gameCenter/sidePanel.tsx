@@ -25,8 +25,8 @@ export class SidePanel extends React.Component<SidePanelProps, SidePanelStates> 
   render() {
     let self = this;
     return (
-      <div className="digitalAtlas-sidePanel scroll-1">
-        <ul className="digitalAtlas-ul">
+      <div className="gameCenter-sidePanel scroll-1">
+        <ul className="gameCenter-ul">
           <li><div onClick={this.handleClick.bind(this,0)}><span>HTMLGAME_推箱子游戏</span></div></li>
           <li><div onClick={this.handleClick.bind(this,1)}><span>HTMLGAME_别踩白块儿</span></div></li>
           <li><div onClick={this.handleClick.bind(this,2)}><span>HTMLGAME_打砖块游戏</span></div></li>
