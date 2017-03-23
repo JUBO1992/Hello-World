@@ -3,7 +3,8 @@ import * as ReactDOM from "react-dom";
 import { Tabs, Input, Button, Table, Icon, Switch, Collapse, Card } from 'antd';
 
 export interface CardListProps {
-  viewData?: (params: Object) => void;// 查看数据
+  viewData?: (record: Object) => void;// 查看数据
+  dataSource?: any[];
 }
 export interface CardListState {
   dataSource?: any[];
@@ -20,34 +21,38 @@ export class CardList extends React.Component<CardListProps, CardListState>{
   constructor(props: CardListProps, state: CardListState) {
     super(props);
     let columns = [{
-      title: 'Name',
+      title: '土地承包方信息列表',
       dataIndex: 'name',
       key: 'name',
     }, {
-      title: 'Action',
+      title: '',
       key: 'action',
+      width: 70,
       render: (text, record) => (
         <span>
-          <a>查看数据</a>
+          <a onClick={this.viewData.bind(this, record)}>查看数据</a>
         </span>
       ),
     }];
     let data =
-      [{ name: 'aaa' },
-      { name: 'bbb' },
-      { name: 'ccc' },
-      { name: 'ddd' },
-      { name: 'eee' },
-      { name: 'fff' },
-      { name: 'bbb' },
-      { name: 'bbb' },
-      { name: 'bbb' },
-      { name: 'bbb' }];
+      [{ name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p>, id: '1234567890' },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
+      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> }
+      ];
     this.state = {
       dataSource: data,
       columns: columns,
-      total: 0,
-      pageSize: 5,
+      total: data.length,
+      pageSize: 9,
       pageNo: 1,
     };
   }
@@ -55,8 +60,8 @@ export class CardList extends React.Component<CardListProps, CardListState>{
   componentDidMount() {
   }
 
-  handlePageChange(e) {
-    this.state.pageNo = e;
+  viewData(record) {
+    alert(record.name);
   }
 
   refs: {
@@ -68,13 +73,14 @@ export class CardList extends React.Component<CardListProps, CardListState>{
     const pagination = {
       total: this.state.total,
       pageSize: this.state.pageSize,
-      // onChange: this.handlePageChange.bind(this),
-      // current: this.state.pageNo,
+      simple: true,
     }
     return (
       <div>
         <div ref="cardListDiv">
-          <Table columns={this.state.columns} dataSource={this.state.dataSource} pagination={pagination} size='small'/>
+          <Table columns={this.state.columns}
+            dataSource={this.state.dataSource}
+            pagination={pagination} />
         </div>
       </div>
     );
