@@ -23,6 +23,7 @@ namespace AspMvc
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls("http://*:8000")
                 .Build();
 
             host.Run();

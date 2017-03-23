@@ -2,6 +2,7 @@ import "./styles/sidePanel.less";
 
 import * as React from "react";
 // import {Map} from "../map"
+import {CardList} from "./cardList";
 
 export interface SidePanelProps {
 }
@@ -29,7 +30,9 @@ export class SidePanel extends React.Component<SidePanelProps, SidePanelStates> 
     // let map = this._map;
     let self = this;
     return (
-      <div>This is sidepanel.</div>
+      <div>This is sidepanel.
+        <CardList/>
+      </div>
     );
   }
 }
