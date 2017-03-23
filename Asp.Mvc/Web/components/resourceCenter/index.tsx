@@ -2,8 +2,10 @@ import "./styles/resourceCenter.less";
 
 import * as React from "react";
 import { Footer } from "../footer"
-import { Button } from "antd";
+import { Button, Progress, Steps, Icon, Rate } from "antd";
 import Echarts = require("echarts");
+
+const Step = Steps.Step;
 
 export interface ResourceCenterProps {
 }
@@ -24,8 +26,8 @@ export class ResourceCenter extends React.Component<ResourceCenterProps, Resourc
   private createChart() {
     let myChart1 = Echarts.init(this.refs.graphicDiv1);
     let myChart2 = Echarts.init(this.refs.graphicDiv2);
-    let myChart3 = Echarts.init(this.refs.graphicDiv3);
-    let myChart4 = Echarts.init(this.refs.graphicDiv4);
+    // let myChart3 = Echarts.init(this.refs.graphicDiv3);
+    // let myChart4 = Echarts.init(this.refs.graphicDiv4);
     let option = {
       title: {
         text: '某站点用户访问来源',
@@ -66,8 +68,8 @@ export class ResourceCenter extends React.Component<ResourceCenterProps, Resourc
     };
     myChart1.setOption(option);
     myChart2.setOption(option);
-    myChart3.setOption(option);
-    myChart4.setOption(option);
+    // myChart3.setOption(option);
+    // myChart4.setOption(option);
   }
   refs: {
     [key: string]: any;
@@ -81,21 +83,37 @@ export class ResourceCenter extends React.Component<ResourceCenterProps, Resourc
     return (
       <div className="resourceCenter" style={{ textAlign: 'center' }}>
         <span style={{ display: 'inherit' }}>This is ResourceCenter!</span>
+        <br />
         <Button type="primary" shape="circle" icon="search" />
         <Button type="primary" icon="search">Search</Button>
         <Button shape="circle" icon="search" />
         <Button icon="search">Search</Button>
-        <br />
         <Button shape="circle" icon="search" />
         <Button icon="search">Search</Button>
         <Button type="dashed" shape="circle" icon="search" />
         <Button type="dashed" icon="search">Search</Button>
+        <br /><br />
+        <Progress type="circle" percent={75} />
+        <Progress type="circle" percent={70} status="exception" />
+        <Progress type="circle" percent={100} />
+        <br /><br />
+        <Steps>
+          <Step status="finish" title="Login" icon={<Icon type="user" />} />
+          <Step status="finish" title="Verification" icon={<Icon type="solution" />} />
+          <Step status="process" title="Pay" icon={<Icon type="credit-card" />} />
+          <Step status="wait" title="Done" icon={<Icon type="smile-o" />} />
+        </Steps>
+        <br />
+        <Rate allowHalf defaultValue={5.0} />
+        <br /><br />
         <div style={{ position: 'relative', width: '100%', paddingBottom: '500px' }}>
           <div ref="graphicDiv1" style={{ width: '50%', height: '500px', float: 'left' }} />
           <div ref="graphicDiv2" style={{ width: '50%', height: '500px', float: 'right' }} />
         </div>
-        <div ref="graphicDiv3" style={{ width: '100%', height: '500px'/*, float: 'left'*/ }} />
-        <div ref="graphicDiv4" style={{ width: '100%', height: '500px'/*, float: 'right'*/ }} />
+        {/*
+        <div ref="graphicDiv3" style={{ width: '100%', height: '500px' }} />
+        <div ref="graphicDiv4" style={{ width: '100%', height: '500px' }} />
+        */}
         <Footer />
       </div>
     );
