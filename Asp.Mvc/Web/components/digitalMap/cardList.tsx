@@ -1,15 +1,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Tabs, Input, Button, Table, Icon, Switch, Collapse, Card } from 'antd';
+import { Table, Card } from 'antd';
 
 export interface CardListProps {
-  viewData?: (record: Object) => void;// 查看数据
-  dataSource?: any[];
+  viewData?: (id: string) => void;// 查看数据
+  data: any[];
+  header: string;
+  idField: string;
+  pageSize?: number;// 默认为10
 }
 export interface CardListState {
   dataSource?: any[];
   columns?: any[];
-  pageSize?: number;
   total?: number;
   pageNo?: number;
 }
@@ -18,50 +20,93 @@ export interface CardListState {
  * 自定义Card列表
  */
 export class CardList extends React.Component<CardListProps, CardListState>{
+  tempkey: number = 0;
   constructor(props: CardListProps, state: CardListState) {
     super(props);
     let columns = [{
-      title: '土地承包方信息列表',
-      dataIndex: 'name',
-      key: 'name',
+      title: this.props.header,
+      dataIndex: 'info',
+      key: 'info',
     }, {
       title: '',
       key: 'action',
-      width: 70,
+      width: 80,
       render: (text, record) => (
         <span>
           <a onClick={this.viewData.bind(this, record)}>查看数据</a>
         </span>
       ),
     }];
-    let data =
-      [{ name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p>, id: '1234567890' },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> },
-      { name: <p style={{ fontSize: '12px', margin: '-5px 5px' }}>姓名：巨擘<br />身份证：62272219920613101X</p> }
-      ];
     this.state = {
-      dataSource: data,
+      dataSource: [],
       columns: columns,
-      total: data.length,
-      pageSize: 9,
+      total: 0,
       pageNo: 1,
     };
   }
 
+  initData() {
+    let data = this.props.data, temp = [];
+    for (let d in data) {
+      temp.push({
+        info:
+        <div id={data[d][this.props.idField]} style={{ margin: '-10px 0px -10px 10px', color: '#333' }}>
+          {this.itemInfo(data[d])}
+        </div>,
+        id: data[d][this.props.idField],
+        key: parseInt(d),
+      });
+    }
+    this.setState({ dataSource: temp, total: temp.length, });
+  }
+
+  itemInfo(obj) {
+    let plist = [];
+    for (let i in obj) {
+      // plist.push(<p style={{ fontSize: 12, margin: '2px 0px' }}>{obj[i]}</p>);// p标签不继承父标签color属性
+      plist.push(<span style={{ fontSize: 12, lineHeight: '20px' }}>{obj[i]}<br /></span>);// span标签继承父标签color属性
+    }
+    return plist;
+  }
+
   componentDidMount() {
+    this.initData();
+  }
+
+  componentWillReceiveProps(nextProps: CardListProps) {
+    if (this.props !== nextProps) {
+      this.props = nextProps;
+      this.initData();
+    }
   }
 
   viewData(record) {
-    alert(record.name);
+    this.markSelect(record.key);
+    if (this.props.viewData) {
+      this.props.viewData(record.id);
+    }
+  }
+
+  markSelect(key) {
+    if (this.tempkey >= 0) {
+      let divId = this.state.dataSource[this.tempkey].id;
+      if (document.getElementById(divId)) {
+        document.getElementById(divId).style.color = "#333";
+      }
+    }
+    if (key >= 0) {
+      let divId = this.state.dataSource[key].id;
+      if (document.getElementById(divId)) {
+        document.getElementById(divId).style.color = "blue";
+      }
+    }
+    this.tempkey = key;
+  }
+
+  handlePageChange(e) {
+    this.state.pageNo = e;
+    this.initData();
+    this.markSelect(this.tempkey);
   }
 
   refs: {
@@ -71,8 +116,10 @@ export class CardList extends React.Component<CardListProps, CardListState>{
 
   render() {
     const pagination = {
+      pageSize: this.props.pageSize ? this.props.pageSize : 10,
       total: this.state.total,
-      pageSize: this.state.pageSize,
+      onChange: this.handlePageChange.bind(this),
+      current: this.state.pageNo,
       simple: true,
     }
     return (
