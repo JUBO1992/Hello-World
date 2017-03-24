@@ -5,7 +5,7 @@ import { Table, Card } from 'antd';
 export interface CardListProps {
   viewData?: (id: string) => void;// 查看数据
   data: any[];
-  header: string;
+  header?: string;// 默认为'信息列表'
   idField: string;
   pageSize?: number;// 默认为10
 }
@@ -20,11 +20,11 @@ export interface CardListState {
  * 自定义Card列表
  */
 export class CardList extends React.Component<CardListProps, CardListState>{
-  tempkey: number = 0;
+  tempId: string;
   constructor(props: CardListProps, state: CardListState) {
     super(props);
     let columns = [{
-      title: this.props.header,
+      title: this.props.header ? this.props.header : '信息列表',
       dataIndex: 'info',
       key: 'info',
     }, {
@@ -46,7 +46,8 @@ export class CardList extends React.Component<CardListProps, CardListState>{
   }
 
   initData() {
-    let data = this.props.data, temp = [];
+    let temp = [], self = this;
+    /*let data = this.props.data;
     for (let d in data) {
       temp.push({
         info:
@@ -56,8 +57,18 @@ export class CardList extends React.Component<CardListProps, CardListState>{
         id: data[d][this.props.idField],
         key: parseInt(d),
       });
-    }
-    this.setState({ dataSource: temp, total: temp.length, });
+    }*/
+    this.props.data.map(function (d, index) {
+      temp.push({
+        info:
+        <div id={d[self.props.idField]} style={{ margin: '-10px 0px -10px 10px', color: '#333' }}>
+          {self.itemInfo(d)}
+        </div>,
+        id: d[self.props.idField],
+        key: index, //very important
+      });
+    });
+    this.setState({ dataSource: temp, total: temp.length, }, () => { this.markSelect(this.tempId); });
   }
 
   itemInfo(obj) {
@@ -76,37 +87,35 @@ export class CardList extends React.Component<CardListProps, CardListState>{
   componentWillReceiveProps(nextProps: CardListProps) {
     if (this.props !== nextProps) {
       this.props = nextProps;
+      this.tempId = null;
       this.initData();
     }
   }
 
   viewData(record) {
-    this.markSelect(record.key);
+    this.markSelect(record.id);
     if (this.props.viewData) {
       this.props.viewData(record.id);
     }
   }
 
-  markSelect(key) {
-    if (this.tempkey >= 0) {
-      let divId = this.state.dataSource[this.tempkey].id;
-      if (document.getElementById(divId)) {
-        document.getElementById(divId).style.color = "#333";
+  markSelect(id) {
+    if (this.tempId) {
+      if (document.getElementById(this.tempId)) {
+        document.getElementById(this.tempId).style.color = "#333";
       }
     }
-    if (key >= 0) {
-      let divId = this.state.dataSource[key].id;
-      if (document.getElementById(divId)) {
-        document.getElementById(divId).style.color = "blue";
+    if (id) {
+      if (document.getElementById(id)) {
+        document.getElementById(id).style.color = "blue";
       }
     }
-    this.tempkey = key;
+    this.tempId = id;
   }
 
   handlePageChange(e) {
     this.state.pageNo = e;
     this.initData();
-    this.markSelect(this.tempkey);
   }
 
   refs: {
@@ -127,7 +136,7 @@ export class CardList extends React.Component<CardListProps, CardListState>{
         <div ref="cardListDiv">
           <Table columns={this.state.columns}
             dataSource={this.state.dataSource}
-            pagination={pagination} />
+            pagination={pagination}/>
         </div>
       </div>
     );
