@@ -13,7 +13,6 @@ export interface CardListState {
   dataSource?: any[];
   columns?: any[];
   total?: number;
-  pageNo?: number;
 }
 
 /**
@@ -41,7 +40,6 @@ export class CardList extends React.Component<CardListProps, CardListState>{
       dataSource: [],
       columns: columns,
       total: 0,
-      pageNo: 1,
     };
   }
 
@@ -85,11 +83,8 @@ export class CardList extends React.Component<CardListProps, CardListState>{
   }
 
   componentWillReceiveProps(nextProps: CardListProps) {
-    if (this.props !== nextProps) {
-      this.props = nextProps;
-      this.tempId = null;
-      this.initData();
-    }
+    this.props = nextProps;
+    this.initData();
   }
 
   viewData(record) {
@@ -109,12 +104,11 @@ export class CardList extends React.Component<CardListProps, CardListState>{
       if (document.getElementById(id)) {
         document.getElementById(id).style.color = "blue";
       }
+      this.tempId = id;
     }
-    this.tempId = id;
   }
 
   handlePageChange(e) {
-    this.state.pageNo = e;
     this.initData();
   }
 
@@ -128,7 +122,6 @@ export class CardList extends React.Component<CardListProps, CardListState>{
       pageSize: this.props.pageSize ? this.props.pageSize : 10,
       total: this.state.total,
       onChange: this.handlePageChange.bind(this),
-      current: this.state.pageNo,
       simple: true,
     }
     return (
@@ -136,7 +129,7 @@ export class CardList extends React.Component<CardListProps, CardListState>{
         <div ref="cardListDiv">
           <Table columns={this.state.columns}
             dataSource={this.state.dataSource}
-            pagination={pagination}/>
+            pagination={pagination} />
         </div>
       </div>
     );
